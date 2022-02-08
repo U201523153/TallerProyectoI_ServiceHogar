@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "TipoDeUsuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Elije una opción</h2>
+<center><img src="~/imagenes/logo_SH.png" width="180"></center>
+</br>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        @Html.ActionLink("Necesito un servicio", "RegistroUsuario", "Usuarios", new {  }, new { @class = "btn btn-primary" })
+
+    </div>
+
+</div>
+    </br>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        @Html.ActionLink("Ofrecer un Servicio", "RegistroProfesional", "Profesional", new { }, new { @class = "btn btn-primary" })
+    </div>
+
+</div>

@@ -1,0 +1,121 @@
+﻿@model ServiceHogarApp.Models.TB_Profesionales
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TB_Profesionales</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TIPO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIPO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APELLIDO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APELLIDO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DNI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DNI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USUARIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USUARIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CLAVE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CLAVE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEXO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEXO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHANAC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHANAC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DISTRITO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DISTRITO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ESPECIALIDAD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ESPECIALIDAD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESCRIPCIÓN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESCRIPCIÓN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROMEDIOCAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROMEDIOCAL)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "ListadoProfesional")
+        </div>
+    }
+</div>

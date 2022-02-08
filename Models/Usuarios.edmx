@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_ServiceHogarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TB_Calificaciones">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CALIFICACION" Type="int" />
+          <Property Name="IDUSUARIO" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_Profesionales">
+          <Key>
+            <PropertyRef Name="IDUSUARIO" />
+          </Key>
+          <Property Name="IDUSUARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIPO" Type="varchar" MaxLength="12" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="40" />
+          <Property Name="APELLIDO" Type="varchar" MaxLength="40" />
+          <Property Name="DNI" Type="varchar" MaxLength="8" />
+          <Property Name="USUARIO" Type="varchar" MaxLength="40" />
+          <Property Name="CLAVE" Type="varchar" MaxLength="8" />
+          <Property Name="SEXO" Type="char" MaxLength="1" />
+          <Property Name="FECHANAC" Type="date" />
+          <Property Name="DISTRITO" Type="varchar" MaxLength="40" />
+          <Property Name="ESPECIALIDAD" Type="varchar" MaxLength="20" />
+          <Property Name="DESCRIPCIÓN" Type="varchar" MaxLength="100" />
+          <Property Name="CV" Type="varchar" MaxLength="100" />
+          <Property Name="PROMEDIOCAL" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_Servicios">
+          <Key>
+            <PropertyRef Name="IDSERVICIO" />
+          </Key>
+          <Property Name="IDSERVICIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRESERV" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="TB_Usuarios">
+          <Key>
+            <PropertyRef Name="IDUSUARIO" />
+          </Key>
+          <Property Name="IDUSUARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIPO" Type="varchar" MaxLength="12" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="40" />
+          <Property Name="APELLIDO" Type="varchar" MaxLength="40" />
+          <Property Name="DNI" Type="varchar" MaxLength="8" />
+          <Property Name="USUARIO" Type="varchar" MaxLength="40" />
+          <Property Name="CLAVE" Type="varchar" MaxLength="8" />
+          <Property Name="SEXO" Type="char" MaxLength="1" />
+          <Property Name="FECHANAC" Type="date" />
+          <Property Name="DISTRITO" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <Association Name="FK__TB_Califi__IDUSU__2A4B4B5E">
+          <End Role="TB_Profesionales" Type="Self.TB_Profesionales" Multiplicity="0..1" />
+          <End Role="TB_Calificaciones" Type="Self.TB_Calificaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Profesionales">
+              <PropertyRef Name="IDUSUARIO" />
+            </Principal>
+            <Dependent Role="TB_Calificaciones">
+              <PropertyRef Name="IDUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SP_REGISTRAR_PROFESIONAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TIPO" Type="varchar" Mode="In" />
+          <Parameter Name="NOMBRE" Type="varchar" Mode="In" />
+          <Parameter Name="APELLIDO" Type="varchar" Mode="In" />
+          <Parameter Name="DNI" Type="varchar" Mode="In" />
+          <Parameter Name="USUARIO" Type="varchar" Mode="In" />
+          <Parameter Name="CLAVE" Type="varchar" Mode="In" />
+          <Parameter Name="SEXO" Type="char" Mode="In" />
+          <Parameter Name="FECHANAC" Type="date" Mode="In" />
+          <Parameter Name="DISTRITO" Type="varchar" Mode="In" />
+          <Parameter Name="ESPECIALIDAD" Type="varchar" Mode="In" />
+          <Parameter Name="DESCRIPCIÓN" Type="varchar" Mode="In" />
+          <Parameter Name="CV" Type="varchar" Mode="In" />
+          <Parameter Name="PROMEDIOCA" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="DB_ServiceHogarModelStoreContainer">
+          <EntitySet Name="TB_Calificaciones" EntityType="Self.TB_Calificaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_Profesionales" EntityType="Self.TB_Profesionales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_Servicios" EntityType="Self.TB_Servicios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_Usuarios" EntityType="Self.TB_Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__TB_Califi__IDUSU__2A4B4B5E" Association="Self.FK__TB_Califi__IDUSU__2A4B4B5E">
+            <End Role="TB_Profesionales" EntitySet="TB_Profesionales" />
+            <End Role="TB_Calificaciones" EntitySet="TB_Calificaciones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_ServiceHogarModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TB_Calificaciones">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CALIFICACION" Type="Int32" />
+          <Property Name="IDUSUARIO" Type="Int32" />
+          <NavigationProperty Name="TB_Profesionales" Relationship="Self.FK__TB_Califi__IDUSU__2A4B4B5E" FromRole="TB_Calificaciones" ToRole="TB_Profesionales" />
+        </EntityType>
+        <EntityType Name="TB_Profesionales">
+          <Key>
+            <PropertyRef Name="IDUSUARIO" />
+          </Key>
+          <Property Name="IDUSUARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIPO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="APELLIDO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="DNI" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CLAVE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="SEXO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FECHANAC" Type="DateTime" Precision="0" />
+          <Property Name="DISTRITO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ESPECIALIDAD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCIÓN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PROMEDIOCAL" Type="Int32" />
+          <NavigationProperty Name="TB_Calificaciones" Relationship="Self.FK__TB_Califi__IDUSU__2A4B4B5E" FromRole="TB_Profesionales" ToRole="TB_Calificaciones" />
+          <Property Name="CV" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TB_Servicios">
+          <Key>
+            <PropertyRef Name="IDSERVICIO" />
+          </Key>
+          <Property Name="IDSERVICIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRESERV" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TB_Usuarios">
+          <Key>
+            <PropertyRef Name="IDUSUARIO" />
+          </Key>
+          <Property Name="IDUSUARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIPO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="APELLIDO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="DNI" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CLAVE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="SEXO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FECHANAC" Type="DateTime" Precision="0" />
+          <Property Name="DISTRITO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__TB_Califi__IDUSU__2A4B4B5E">
+          <End Role="TB_Profesionales" Type="Self.TB_Profesionales" Multiplicity="0..1" />
+          <End Role="TB_Calificaciones" Type="Self.TB_Calificaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Profesionales">
+              <PropertyRef Name="IDUSUARIO" />
+            </Principal>
+            <Dependent Role="TB_Calificaciones">
+              <PropertyRef Name="IDUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_ServiceHogarEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TB_Calificaciones" EntityType="Self.TB_Calificaciones" />
+          <EntitySet Name="TB_Profesionales" EntityType="Self.TB_Profesionales" />
+          <EntitySet Name="TB_Servicios" EntityType="Self.TB_Servicios" />
+          <EntitySet Name="TB_Usuarios" EntityType="Self.TB_Usuarios" />
+          <AssociationSet Name="FK__TB_Califi__IDUSU__2A4B4B5E" Association="Self.FK__TB_Califi__IDUSU__2A4B4B5E">
+            <End Role="TB_Profesionales" EntitySet="TB_Profesionales" />
+            <End Role="TB_Calificaciones" EntitySet="TB_Calificaciones" />
+          </AssociationSet>
+          <FunctionImport Name="SP_REGISTRAR_PROFESIONAL">
+            <Parameter Name="TIPO" Mode="In" Type="String" />
+            <Parameter Name="NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="APELLIDO" Mode="In" Type="String" />
+            <Parameter Name="DNI" Mode="In" Type="String" />
+            <Parameter Name="USUARIO" Mode="In" Type="String" />
+            <Parameter Name="CLAVE" Mode="In" Type="String" />
+            <Parameter Name="SEXO" Mode="In" Type="String" />
+            <Parameter Name="FECHANAC" Mode="In" Type="DateTime" />
+            <Parameter Name="DISTRITO" Mode="In" Type="String" />
+            <Parameter Name="ESPECIALIDAD" Mode="In" Type="String" />
+            <Parameter Name="DESCRIPCIÓN" Mode="In" Type="String" />
+            <Parameter Name="CV" Mode="In" Type="String" />
+            <Parameter Name="PROMEDIOCA" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_ServiceHogarModelStoreContainer" CdmEntityContainer="DB_ServiceHogarEntities">
+          <EntitySetMapping Name="TB_Calificaciones">
+            <EntityTypeMapping TypeName="DB_ServiceHogarModel.TB_Calificaciones">
+              <MappingFragment StoreEntitySet="TB_Calificaciones">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CALIFICACION" ColumnName="CALIFICACION" />
+                <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Profesionales">
+            <EntityTypeMapping TypeName="DB_ServiceHogarModel.TB_Profesionales">
+              <MappingFragment StoreEntitySet="TB_Profesionales">
+                <ScalarProperty Name="CV" ColumnName="CV" />
+                <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="CLAVE" ColumnName="CLAVE" />
+                <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+                <ScalarProperty Name="FECHANAC" ColumnName="FECHANAC" />
+                <ScalarProperty Name="DISTRITO" ColumnName="DISTRITO" />
+                <ScalarProperty Name="ESPECIALIDAD" ColumnName="ESPECIALIDAD" />
+                <ScalarProperty Name="DESCRIPCIÓN" ColumnName="DESCRIPCIÓN" />
+                <ScalarProperty Name="PROMEDIOCAL" ColumnName="PROMEDIOCAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Servicios">
+            <EntityTypeMapping TypeName="DB_ServiceHogarModel.TB_Servicios">
+              <MappingFragment StoreEntitySet="TB_Servicios">
+                <ScalarProperty Name="IDSERVICIO" ColumnName="IDSERVICIO" />
+                <ScalarProperty Name="NOMBRESERV" ColumnName="NOMBRESERV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Usuarios">
+            <EntityTypeMapping TypeName="DB_ServiceHogarModel.TB_Usuarios">
+              <MappingFragment StoreEntitySet="TB_Usuarios">
+                <ScalarProperty Name="IDUSUARIO" ColumnName="IDUSUARIO" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="CLAVE" ColumnName="CLAVE" />
+                <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+                <ScalarProperty Name="FECHANAC" ColumnName="FECHANAC" />
+                <ScalarProperty Name="DISTRITO" ColumnName="DISTRITO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_REGISTRAR_PROFESIONAL" FunctionName="DB_ServiceHogarModel.Store.SP_REGISTRAR_PROFESIONAL" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

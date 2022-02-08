@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ServiceHogarApp.Models.TB_Servicios>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center><h2>SERVICIOS</h2></center>
+<body style="background-image: url('https://i.ibb.co/QMwfkwc/backgrounddd.jpg'); ">
+
+    <div class="container">
+        <div class="row">
+            @{int a = 0; }
+            @foreach (var item in Model)
+            {
+                if (a % 2 == 0)
+                {
+                    <div class="col-xs-6 col-sm-4 col-md-4">
+                        <a href="@Url.Action("Details", "Servicios", new { id=item.IDSERVICIO })"><img src="~/imagenes/@(item.NOMBRESERV).png" style="height:160px;width:160px;" /></a>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-xs-6 col-sm-4 col-md-4">
+                        <a href="@Url.Action("Details", "Details", new { id=item.IDSERVICIO })"><img src="~/imagenes/@(item.NOMBRESERV).png" style="height:160px;width:160px;" /></a>
+                    </div>
+                }
+                a++;
+            }
+        </div>
+    </div>
+</body>
